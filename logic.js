@@ -87745,7 +87745,6 @@ const persistencia = {
     return localStorage.getItem("record");
   },
 };
-image.png;
 
 const finalizarJuego = () => {
   $(
