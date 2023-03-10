@@ -53,14 +53,16 @@ export class Game {
       .trim();
   }
 
-  finalizarJuego() {
-    if (this.score > persistencia.getStorage("bestScore")) {
+  finalizarJuego = () => {
+    const bestScore = persistencia.getStorage("bestScore") ?? 0;
+
+    if (this.score > bestScore) {
       persistencia.setStorage("bestScore", this.score);
     }
     persistencia.setStorage("currentScore", this.score);
     const URLactual = window.location.href;
     location.href = URLactual + "gameover.html";
-  }
+  };
 
   reiniciarTemporizador() {
     clearTimeout(this.temporizadorID);
@@ -69,7 +71,7 @@ export class Game {
 
   aceptarPalabra() {
     this.reiniciarTemporizador();
-    this.record += 1;
+    this.score += 1;
     this.arrPalabrasUtilizadas.push(this.palabra);
     this.actualizarLetra();
   }
