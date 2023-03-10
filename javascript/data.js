@@ -1,4 +1,4 @@
-const words = [
+export const arrPalabras = [
   "Aarón",
   "aarónico",
   "aaronita",
