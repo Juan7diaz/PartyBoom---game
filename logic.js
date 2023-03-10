@@ -87745,6 +87745,7 @@ const persistencia = {
     return localStorage.getItem("record");
   },
 };
+image.png;
 
 const finalizarJuego = () => {
   $(
@@ -87755,7 +87756,7 @@ const finalizarJuego = () => {
   }
   finTiempo = true;
 };
-setTimeout(finalizarJuego, 5000);
+setTimeout(finalizarJuego, 10000);
 
 // funcion princial
 const main = () => {
