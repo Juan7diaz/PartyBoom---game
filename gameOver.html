@@ -10,13 +10,18 @@
     <h1>Game Over :c</h1>
     <p>Sorry, you lost. Better luck next time!</p>
     <div id="score"></div>
-    <a href="/">One more time!</a>
+    <div id="link"></div>
     <script>
+      const $ = (selector) => document.getElementById(selector);
       const bestScore = localStorage.getItem("bestScore");
       const currentScore = localStorage.getItem("currentScore");
-      document.getElementById(
-        "score"
-      ).innerHTML = `Your score: ${currentScore} <br> Best score: ${bestScore}`;
+      if (window.location.href.includes("localhost")) {
+        $("link").innerHTML = `<a href="http://localhost:5500/">Play Again</a>`;
+      } else {
+        $(
+          "link"
+        ).innerHTML = `<a href="https://juan7diaz.github.io/PartyBoom-game/">Play Again</a>`;
+      }
     </script>
   </body>
 </html>
