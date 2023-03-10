@@ -30,7 +30,7 @@ export class Game {
     const consonantes = "qwrtypsdfghjklzxcvbnm";
     const priLet = consonantes[Math.floor(Math.random() * consonantes.length)];
     const segLet = vocales[Math.floor(Math.random() * vocales.length)];
-    this.letras = priLet + segLet;
+    this.letras = "co";
     return this.letras;
   };
 
@@ -70,7 +70,7 @@ export class Game {
   aceptarPalabra() {
     this.reiniciarTemporizador();
     this.record += 1;
-    this.arrPalabrasUtilizadas.push(palabra);
+    this.arrPalabrasUtilizadas.push(this.palabra);
     this.actualizarLetra();
   }
 
