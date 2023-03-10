@@ -87679,11 +87679,11 @@ inputPalabra.addEventListener("keydown", function (event) {
 
 //obtiene las letras genericas a buscar
 const generarLetras = () => {
-  const Todasletras = "abcdefghijklmnopqrstuvwxyz";
-  const tam = Todasletras.length;
-  const primeraLetra = Todasletras[Math.floor(Math.random() * tam)];
-  const segundaLetra = Todasletras[Math.floor(Math.random() * tam)];
-  letras = primeraLetra + segundaLetra;
+  const vocales = "aeiou";
+  const consonantes = "qwrtypsdfghjklzxcvbnm";
+  const priLet = consonantes[Math.floor(Math.random() * consonantes.length)];
+  const segLet = vocales[Math.floor(Math.random() * vocales.length)];
+  letras = priLet + segLet;
   return letras;
 };
 
@@ -87747,15 +87747,24 @@ const persistencia = {
 };
 
 const finalizarJuego = () => {
-  $(
-    "mensaje"
-  ).innerHTML = `<h3>Se acabo el tiempo</h3><br/><h3>Record: ${record}</h3>`;
+  $("mensaje").innerHTML = `
+    <h3>Se acabo el tiempo</h3>
+    <br/>
+    <h3>Record: ${record}</h3>
+    <hr>
+    <h3>MaximoRecord: ${persistencia.getRecord() ?? record}</h3>
+    `;
   if (record > persistencia.getRecord()) {
     persistencia.setRecord(record);
   }
   finTiempo = true;
 };
-setTimeout(finalizarJuego, 10000);
+
+let temporizadorID = setTimeout(finalizarJuego, 5000);
+function reiniciarTemporizador() {
+  clearTimeout(temporizadorID);
+  temporizadorID = setTimeout(finalizarJuego, 5000);
+}
 
 // funcion princial
 const main = () => {
@@ -87767,6 +87776,8 @@ const main = () => {
   resetearInput();
 
   if (hacerValidaciones()) {
+    reiniciarTemporizador();
+
     record += 1;
 
     arrPalabrasUtilizadas.push(palabra);
