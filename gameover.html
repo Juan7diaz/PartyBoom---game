@@ -15,6 +15,11 @@
       const $ = (selector) => document.getElementById(selector);
       const bestScore = localStorage.getItem("bestScore");
       const currentScore = localStorage.getItem("currentScore");
+      
+      $(
+        "score"
+      ).innerHTML = `<p class='currentScore'>Your score: ${currentScore}</p>  <p class='bestScore'>Best score: ${bestScore}</p>`;
+      
       if (window.location.href.includes("localhost")) {
         $("link").innerHTML = `<a href="http://localhost:5500/">Play Again</a>`;
       } else {
